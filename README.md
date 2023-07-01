@@ -1,5 +1,7 @@
 # My LaTex Math Notes Template
-My LaTex template for math notes with stylized `tcbtheorem` for definitions, theorem and lemmas etc.
+My LaTex template for math notes with stylized definitions, theorem and lemmas etc. from `tcolorbox`.
+
+![Sample](img/sample.png)
 
 ## References
 https://www.ctan.org/tex-archive/macros/latex/contrib/tcolorbox
