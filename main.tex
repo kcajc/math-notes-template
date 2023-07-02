@@ -15,6 +15,14 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{theorems,skins}
 
+% Variables
+\def\notetitle{MATH 101}
+\def\noteauthor{
+    \textbf{Professor} \\ 
+    \LaTeX\:by Joe\\
+    University}
+\def\notedate{Semester}
+
 % Commands
 \newcommand{\lcm}{\operatorname{lcm}}
 \newcommand{\bz}{\mathbb{Z}}
@@ -206,13 +214,10 @@
 \title{ \normalsize \textsc{}
 		\\ [2.0cm]
 		\LARGE \textbf{
-        \LARGE{MATH 101} \vspace*{10\baselineskip}}
+        \LARGE{\notetitle} \vspace*{10\baselineskip}}
 		}
-\date{}
-\author{\textbf{Professor} \\ 
-		\LaTeX\:by Jack\\
-		University \\
-        Semester}
+\author{\noteauthor}
+\date{\notedate}
 
 \maketitle
 \newpage
