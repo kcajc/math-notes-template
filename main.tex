@@ -192,18 +192,57 @@
     \end{myclaim}
 }
 
+\NewDocumentCommand{\clmp}{+m+m}{
+    \begin{myclaim}{}{}
+        #1
+    \end{myclaim}
+
+    {\renewcommand{\qedsymbol}{\textcolor{pink!20!white}{$\blacksquare$}}
+    \begin{proof}[\hspace{1em}\textbf{Proof for Claim}]$ $\\
+        #2
+    \end{proof}
+    }
+}
+
 \NewDocumentCommand{\uclm}{+m}{
     \begin{myclaim*}{}{}
         #1
     \end{myclaim*}
 }
 
+\NewDocumentCommand{\uclmp}{+m+m}{
+    \begin{myclaim*}{}{}
+        #1
+    \end{myclaim*}
+
+    {\renewcommand{\qedsymbol}{\textcolor{pink!20!white}{$\blacksquare$}}
+    \begin{proof}[\noindent\textbf{Proof for Claim}]$ $\\
+        #2
+    \end{proof}
+    }
+}
+
 % Proof
 \NewDocumentCommand{\pf}{+m}{
     \begin{proof}
-        [\hspace{1em}\textbf{Proof.}]
+        [\noindent\textbf{Proof.}]$ $\\
         #1
     \end{proof}
+}
+
+% Example
+\newenvironment{example}[1][]
+{\noindent{\textbf{Example.}} #1}
+
+\NewDocumentCommand{\ex}{+m}{
+    \begin{example}$ $\\
+        #1
+    \end{example}
+}
+
+% Remark
+\NewDocumentCommand{\rmk}{+m}{
+    {\it \color{blue!50!white}#1}
 }
 
 % ------------------------------------------------------------------------------
@@ -251,14 +290,20 @@
     A proposition.
 }
 
-\uclm{
+\uclmp{
     A claim.
+}{
+    Deserunt in anim eiusmod ex Lorem mollit. Mollit aliquip qui duis cillum dolore ut. Exercitation eu ut dolor tempor cillum ullamco. Nostrud enim minim esse ad aliqua officia anim amet nisi aliquip exercitation. Velit amet elit do culpa qui consectetur.
 }
 
 \pf{
-    Veniam velit incididunt deserunt est proident consectetur non velit ipsum voluptate nulla quis. Ea ullamco consequat non ad amet cupidatat cupidatat aliquip tempor sint ea nisi elit dolore dolore. Amet sunt duis adipisicing ad esse aute officia laborum anim cupidatat sit adipisicing ea. Elit officia esse deserunt laborum sit ex commodo ad incididunt. Est occaecat culpa excepteur sunt esse consectetur ut elit elit officia ipsum officia nisi sint irure.
+    Veniam velit incididunt deserunt est proident consectetur non velit ipsum voluptate nulla quis. Ea ullamco consequat non ad amet cupidatat cupidatat aliquip tempor sint ea nisi elit dolore dolore. 
 
-    Laboris labore magna dolore eiusmod ea ex et eiusmod laboris. Et aliquip cupidatat reprehenderit id officia pariatur. Pariatur dolore qui amet ad sit minim esse minim. Lorem cillum velit nisi pariatur qui reprehenderit consectetur nostrud est officia nostrud officia ex nostrud veniam.
+    Laboris labore magna dolore eiusmod ea ex et eiusmod laboris. Et aliquip cupidatat reprehenderit id officia pariatur. 
+}
+
+\ex{
+    Nostrud esse occaecat Lorem dolore laborum exercitation adipisicing eu sint sunt et. Excepteur voluptate consectetur qui ex amet esse sunt ut nostrud qui proident non. Ipsum nostrud ut elit dolor. Incididunt voluptate esse et est labore cillum proident duis.
 }
 
 \subsection{Pictures}
