@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[oneside]{book}
 
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
 \usepackage{thmtools}
@@ -36,7 +36,7 @@
 \DeclareMathOperator{\im}{Im}
 
 % Definition
-\newtcbtheorem[number within=subsection]{mydefinition}{Definition}
+\newtcbtheorem[number within=section]{mydefinition}{Definition}
 {
     enhanced,
     frame hidden,
@@ -251,11 +251,9 @@
 % ------------------------------------------------------------------------------
 
 \begin{document}
-\title{ \normalsize \textsc{}
-		\\ [2.0cm]
-		\LARGE \textbf{
-        \LARGE{\notetitle} \vspace*{10\baselineskip}}
-		}
+\title{\textbf{
+    \LARGE{\notetitle} \vspace*{10\baselineskip}}
+    }
 \author{\noteauthor}
 \date{\notedate}
 
@@ -267,7 +265,9 @@
 
 % ------------------------------------------------------------------------------
 
-\section{Examples}
+\chapter{Examples}
+
+\section{Theorem System}
 
 \udefn{Definition Name}{
     A defintion.
@@ -309,7 +309,7 @@
     Nostrud esse occaecat Lorem dolore laborum exercitation adipisicing eu sint sunt et. Excepteur voluptate consectetur qui ex amet esse sunt ut nostrud qui proident non. Ipsum nostrud ut elit dolor. Incididunt voluptate esse et est labore cillum proident duis.
 }
 
-\subsection{Pictures}
+\section{Pictures}
 
 \begin{figure}[H]
     \center
