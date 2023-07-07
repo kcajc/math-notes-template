@@ -25,8 +25,8 @@
 
 % Commands and Operators
 \newcommand{\lcm}{\operatorname{lcm}}
-\newcommand{\bz}{\mathbb{Z}}
 \newcommand{\bn}{\mathbb{N}}
+\newcommand{\bz}{\mathbb{Z}}
 \newcommand{\br}{\mathbb{R}}
 \newcommand{\bq}{\mathbb{Q}}
 \newcommand{\bc}{\mathbb{C}}
@@ -117,10 +117,34 @@
     \end{mylemma}
 }
 
+\NewDocumentCommand{\lemp}{m+m+m}{
+    \begin{mylemma}{#1}{}
+        #2
+    \end{mylemma}
+
+    {\renewcommand{\qedsymbol}{\textcolor{violet!20!white}{$\blacksquare$}}
+    \begin{proof}[\noindent\textbf{Proof for Lemma}]$ $\\
+        #3
+    \end{proof}
+    }
+}
+
 \NewDocumentCommand{\ulem}{m+m}{
     \begin{mylemma*}{#1}{}
         #2
     \end{mylemma*}
+}
+
+\NewDocumentCommand{\ulemp}{m+m+m}{
+    \begin{mylemma*}{#1}{}
+        #2
+    \end{mylemma*}
+
+    {\renewcommand{\qedsymbol}{\textcolor{violet!20!white}{$\blacksquare$}}
+    \begin{proof}[\noindent\textbf{Proof for Lemma}]$ $\\
+        #3
+    \end{proof}
+    }
 }
 
 % Corollary
