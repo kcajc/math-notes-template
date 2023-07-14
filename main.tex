@@ -13,13 +13,23 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{environ}
 \usepackage{tcolorbox}
-\tcbuselibrary{theorems,skins}
+\tcbuselibrary{theorems,skins,breakable}
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
 
 % Variables
 \def\notetitle{MATH 101}
 \def\noteauthor{
     \textbf{Professor} \\ 
-    \LaTeX\:by Joe\\
+    {\LaTeX} by Joe\\
     University}
 \def\notedate{Semester}
 
@@ -30,10 +40,23 @@
 \newcommand{\br}{\mathbb{R}}
 \newcommand{\bq}{\mathbb{Q}}
 \newcommand{\bc}{\mathbb{C}}
-\newcommand{\ibz}{\in \mathbb{Z}}
-\newcommand{\ibn}{\in \mathbb{N}}
-\newcommand{\ibr}{\in \mathbb{R}}
-\DeclareMathOperator{\im}{Im}
+
+% Theorem System
+% The following boxes are provided:
+%   Definition:     \defn 
+%   Theorem:        \thm 
+%   Lemma:          \lem
+%   Corollary:      \cor
+%   Proposition:    \prop   
+%   Claim:          \clm
+%   Fact:           \fact
+%   Proof:          \pf
+%   Example:        \ex
+%   Remark:         \rmk (sentence), \rmkb (block)
+% Suffix
+%   r:              Allow Theorem/Definition to be referenced, e.g. thmr
+%   p:              Add a short proof block for Lemma, Corollary, Proposition or Claim, e.g. lemp
+%                   For theorems, use \pf for proof blocks
 
 % Definition
 \newtcbtheorem[number within=section]{mydefinition}{Definition}
@@ -47,7 +70,7 @@
     coltitle=black,
     colbacktitle=green!20!white,
     colback=green!10!white,
-}{df}
+}{defn}
 
 \NewDocumentCommand{\defn}{m+m}{
     \begin{mydefinition}{#1}{}
@@ -55,20 +78,10 @@
     \end{mydefinition}
 }
 
-\NewDocumentCommand{\udefn}{m+m}{
-    \begin{mydefinition*}{#1}{}
-        #2
-    \end{mydefinition*}
-}
-
-\setstretch{1.2}
-\geometry{
-    textheight=9in,
-    textwidth=5.5in,
-    top=1in,
-    headheight=12pt,
-    headsep=25pt,
-    footskip=30pt
+\NewDocumentCommand{\defnr}{mm+m}{
+    \begin{mydefinition}{#1}{#2}
+        #3
+    \end{mydefinition}
 }
 
 % Theorem
@@ -83,7 +96,7 @@
     coltitle=black,
     colbacktitle=cyan!20!white,
     colback=cyan!10!white,
-}{th}
+}{thm}
 
 \NewDocumentCommand{\thm}{m+m}{
     \begin{mytheorem}{#1}{}
@@ -91,10 +104,10 @@
     \end{mytheorem}
 }
 
-\NewDocumentCommand{\uthm}{m+m}{
-    \begin{mytheorem*}{#1}{}
-        #2
-    \end{mytheorem*}
+\NewDocumentCommand{\thmr}{mm+m}{
+    \begin{mytheorem}{#1}{#2}
+        #3
+    \end{mytheorem}
 }
 
 % Lemma
@@ -109,7 +122,7 @@
     coltitle=black,
     colbacktitle=violet!20!white,
     colback=violet!10!white,
-}{lm}
+}{lem}
 
 \NewDocumentCommand{\lem}{m+m}{
     \begin{mylemma}{#1}{}
@@ -121,24 +134,6 @@
     \begin{mylemma}{#1}{}
         #2
     \end{mylemma}
-
-    {\renewcommand{\qedsymbol}{\textcolor{violet!20!white}{$\blacksquare$}}
-    \begin{proof}[\noindent\textbf{Proof for Lemma}]$ $\\
-        #3
-    \end{proof}
-    }
-}
-
-\NewDocumentCommand{\ulem}{m+m}{
-    \begin{mylemma*}{#1}{}
-        #2
-    \end{mylemma*}
-}
-
-\NewDocumentCommand{\ulemp}{m+m+m}{
-    \begin{mylemma*}{#1}{}
-        #2
-    \end{mylemma*}
 
     {\renewcommand{\qedsymbol}{\textcolor{violet!20!white}{$\blacksquare$}}
     \begin{proof}[\noindent\textbf{Proof for Lemma}]$ $\\
@@ -159,7 +154,7 @@
     coltitle=black,
     colbacktitle=orange!20!white,
     colback=orange!10!white,
-}{cl}
+}{cor}
 
 \NewDocumentCommand{\cor}{+m}{
     \begin{mycorollary}{}{}
@@ -167,10 +162,16 @@
     \end{mycorollary}
 }
 
-\NewDocumentCommand{\ucor}{+m}{
-    \begin{mycorollary*}{}{}
-        #1
-    \end{mycorollary*}
+\NewDocumentCommand{\corp}{m+m+m}{
+    \begin{mycorollary}{#1}{}
+        #2
+    \end{mycorollary}
+
+    {\renewcommand{\qedsymbol}{\textcolor{orange!20!white}{$\blacksquare$}}
+    \begin{proof}[\noindent\textbf{Proof for Corollary}]$ $\\
+        #3
+    \end{proof}
+    }
 }
 
 % Proposition
@@ -185,7 +186,7 @@
     coltitle=black,
     colbacktitle=yellow!20!white,
     colback=yellow!10!white,
-}{pr}
+}{prop}
 
 \NewDocumentCommand{\prop}{+m}{
     \begin{myproposition}{}{}
@@ -193,10 +194,16 @@
     \end{myproposition}
 }
 
-\NewDocumentCommand{\uprop}{+m}{
-    \begin{myproposition*}{}{}
+\NewDocumentCommand{\propp}{+m+m}{
+    \begin{myproposition}{}{}
         #1
-    \end{myproposition*}
+    \end{myproposition}
+
+    {\renewcommand{\qedsymbol}{\textcolor{yellow!20!white}{$\blacksquare$}}
+    \begin{proof}[\noindent\textbf{Proof for Proposition}]$ $\\
+        #2
+    \end{proof}
+    }
 }
 
 % Claim
@@ -211,7 +218,8 @@
     coltitle=black,
     colbacktitle=pink!20!white,
     colback=pink!10!white,
-}{cl}
+}{clm}
+
 
 \NewDocumentCommand{\clm}{+m}{
     \begin{myclaim}{}{}
@@ -225,28 +233,30 @@
     \end{myclaim}
 
     {\renewcommand{\qedsymbol}{\textcolor{pink!20!white}{$\blacksquare$}}
-    \begin{proof}[\hspace{1em}\textbf{Proof for Claim}]$ $\\
-        #2
-    \end{proof}
-    }
-}
-
-\NewDocumentCommand{\uclm}{+m}{
-    \begin{myclaim*}{}{}
-        #1
-    \end{myclaim*}
-}
-
-\NewDocumentCommand{\uclmp}{+m+m}{
-    \begin{myclaim*}{}{}
-        #1
-    \end{myclaim*}
-
-    {\renewcommand{\qedsymbol}{\textcolor{pink!20!white}{$\blacksquare$}}
     \begin{proof}[\noindent\textbf{Proof for Claim}]$ $\\
         #2
     \end{proof}
     }
+}
+
+% Fact
+\newtcbtheorem[use counter from=mydefinition]{myfact}{Fact}
+{
+    enhanced,
+    frame hidden,
+    titlerule=0mm,
+    toptitle=1mm,
+    bottomtitle=1mm,
+    fonttitle=\bfseries\large,
+    coltitle=black,
+    colbacktitle=purple!20!white,
+    colback=purple!10!white,
+}{fact}
+
+\NewDocumentCommand{\fact}{+m}{
+    \begin{myfact}{}{}
+        #1
+    \end{myfact}
 }
 
 % Proof
@@ -258,8 +268,13 @@
 }
 
 % Example
-\newenvironment{example}[1][]
-{\noindent{\textbf{Example.}} #1}
+\newenvironment{example}{%
+	{\noindent{\textbf{Example.}}}
+	\tcolorbox[blanker,breakable,left=5mm,
+	before skip=10pt,after skip=10pt,
+	borderline west={1mm}{0pt}{cyan!10!white}]
+}%
+{\endtcolorbox}
 
 \NewDocumentCommand{\ex}{+m}{
     \begin{example}$ $\\
@@ -272,6 +287,19 @@
     {\it \color{blue!50!white}#1}
 }
 
+\newenvironment{remark}{
+	{\noindent{\textbf{Remark.}}}
+	\tcolorbox[blanker,breakable,left=5mm,
+	before skip=10pt,after skip=10pt,
+	borderline west={1mm}{0pt}{cyan!10!white}]
+}
+{\endtcolorbox}
+
+\NewDocumentCommand{\rmkb}{+m}{
+    \begin{remark}$ $\\
+        #1
+    \end{remark}
+}
 % ------------------------------------------------------------------------------
 
 \begin{document}
@@ -293,34 +321,34 @@
 
 \section{Theorem System}
 
-\udefn{Definition Name}{
+\defn{Definition Name}{
     A defintion.
 }
 
-\defn{Definition with Numbering}{
-    A defintion.
-}
-
-\uthm{Theorem Name}{
+\thmr{Theorem Name}{mybigthm}{
     A theorem.
 }
 
-\ulem{Lemma Name}{
+\lem{Lemma Name}{
     A lemma.
 }
 
-\ucor{
+\fact{
+    A fact.
+}
+
+\cor{
     A corollary.
 }
 
-\uprop{
+\prop{
     A proposition.
 }
 
-\uclmp{
+\clmp{
     A claim.
 }{
-    Deserunt in anim eiusmod ex Lorem mollit. Mollit aliquip qui duis cillum dolore ut. Exercitation eu ut dolor tempor cillum ullamco. Nostrud enim minim esse ad aliqua officia anim amet nisi aliquip exercitation. Velit amet elit do culpa qui consectetur.
+    A reference to Theorem~\ref{thm:mybigthm}
 }
 
 \pf{
@@ -332,6 +360,16 @@
 \ex{
     Nostrud esse occaecat Lorem dolore laborum exercitation adipisicing eu sint sunt et. Excepteur voluptate consectetur qui ex amet esse sunt ut nostrud qui proident non. Ipsum nostrud ut elit dolor. Incididunt voluptate esse et est labore cillum proident duis.
 }
+
+\rmk{
+    Some remark.
+}
+
+\rmkb{
+    Some more remark.
+}
+
+
 
 \section{Pictures}
 
