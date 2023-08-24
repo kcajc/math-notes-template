@@ -87,16 +87,25 @@
     \end{mylemma}
 }
 
+\newenvironment{lempf}{
+	{\noindent{\it \textbf{Proof for Lemma}}}
+	\tcolorbox[blanker,breakable,left=5mm,parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+	borderline west={1mm}{0pt}{violet!20!white}]
+}{
+    \textcolor{violet!20!white}{\hbox{}\nobreak\hfill$\blacksquare$} 
+    \endtcolorbox
+}
+
 \NewDocumentCommand{\lemp}{m+m+m}{
     \begin{mylemma}{#1}{}
         #2
     \end{mylemma}
 
-    {\renewcommand{\qedsymbol}{\textcolor{violet!20!white}{$\blacksquare$}}
-    \begin{proof}[\noindent\textbf{Proof for Lemma}]$ $\\
+    \begin{lempf}
         #3
-    \end{proof}
-    }
+    \end{lempf}
 }
 
 % Corollary
@@ -119,16 +128,25 @@
     \end{mycorollary}
 }
 
+\newenvironment{corpf}{
+	{\noindent{\it \textbf{Proof for Corollary.}}}
+	\tcolorbox[blanker,breakable,left=5mm,parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+	borderline west={1mm}{0pt}{orange!20!white}]
+}{
+    \textcolor{orange!20!white}{\hbox{}\nobreak\hfill$\blacksquare$} 
+    \endtcolorbox
+}
+
 \NewDocumentCommand{\corp}{m+m+m}{
-    \begin{mycorollary}{#1}{}
-        #2
+    \begin{mycorollary}{}{}
+        #1
     \end{mycorollary}
 
-    {\renewcommand{\qedsymbol}{\textcolor{orange!20!white}{$\blacksquare$}}
-    \begin{proof}[\noindent\textbf{Proof for Corollary}]$ $\\
-        #3
-    \end{proof}
-    }
+    \begin{corpf}
+        #2
+    \end{corpf}
 }
 
 % Proposition
@@ -141,8 +159,8 @@
     bottomtitle=1mm,
     fonttitle=\bfseries\large,
     coltitle=black,
-    colbacktitle=yellow!20!white,
-    colback=yellow!10!white,
+    colbacktitle=yellow!30!white,
+    colback=yellow!20!white,
 }{prop}
 
 \NewDocumentCommand{\prop}{+m}{
@@ -151,16 +169,25 @@
     \end{myproposition}
 }
 
+\newenvironment{proppf}{
+	{\noindent{\it \textbf{Proof for Proposition.}}}
+	\tcolorbox[blanker,breakable,left=5mm,parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+	borderline west={1mm}{0pt}{yellow!30!white}]
+}{
+    \textcolor{yellow!30!white}{\hbox{}\nobreak\hfill$\blacksquare$} 
+    \endtcolorbox
+}
+
 \NewDocumentCommand{\propp}{+m+m}{
     \begin{myproposition}{}{}
         #1
     \end{myproposition}
 
-    {\renewcommand{\qedsymbol}{\textcolor{yellow!20!white}{$\blacksquare$}}
-    \begin{proof}[\noindent\textbf{Proof for Proposition}]$ $\\
+    \begin{proppf}
         #2
-    \end{proof}
-    }
+    \end{proppf}
 }
 
 % Claim
@@ -173,27 +200,36 @@
     bottomtitle=1mm,
     fonttitle=\bfseries\large,
     coltitle=black,
-    colbacktitle=pink!20!white,
-    colback=pink!10!white,
+    colbacktitle=pink!30!white,
+    colback=pink!20!white,
 }{clm}
 
 
-\NewDocumentCommand{\clm}{+m}{
-    \begin{myclaim}{}{}
-        #1
-    \end{myclaim}
+\NewDocumentCommand{\clm}{m+m}{
+    \begin{myclaim*}{#1}{}
+        #2
+    \end{myclaim*}
 }
 
-\NewDocumentCommand{\clmp}{+m+m}{
-    \begin{myclaim}{}{}
-        #1
-    \end{myclaim}
+\newenvironment{clmpf}{
+	{\noindent{\it \textbf{Proof for Claim.}}}
+	\tcolorbox[blanker,breakable,left=5mm,parbox=false,
+    before upper={\parindent15pt},
+    after skip=10pt,
+	borderline west={1mm}{0pt}{pink!30!white}]
+}{
+    \textcolor{pink!30!white}{\hbox{}\nobreak\hfill$\blacksquare$} 
+    \endtcolorbox
+}
 
-    {\renewcommand{\qedsymbol}{\textcolor{pink!20!white}{$\blacksquare$}}
-    \begin{proof}[\noindent\textbf{Proof for Claim}]$ $\\
+\NewDocumentCommand{\clmp}{m+m+m}{
+    \begin{myclaim*}{#1}{}
         #2
-    \end{proof}
-    }
+    \end{myclaim*}
+
+    \begin{clmpf}
+        #3
+    \end{clmpf}
 }
 
 % Fact
@@ -216,28 +252,37 @@
     \end{myfact}
 }
 
+
 % Proof
 \NewDocumentCommand{\pf}{+m}{
     \begin{proof}
-        [\noindent\textbf{Proof.}]$ $\\
+        [\noindent\textbf{Proof.}]
         #1
     \end{proof}
 }
 
 % Example
 \newenvironment{example}{%
-	{\noindent{\textbf{Example.}}}
-	\tcolorbox[blanker,breakable,left=5mm,
-	before skip=10pt,after skip=10pt,
-	borderline west={1mm}{0pt}{cyan!10!white}]
-}%
-{\endtcolorbox}
+    \par
+    \vspace{5pt}
+	\begin{minipage}{\textwidth}
+		\noindent\textbf{Example.}
+		\tcolorbox[blanker,breakable,left=5mm,parbox=false,
+	    before upper={\parindent15pt},
+	    after skip=10pt,
+		borderline west={1mm}{0pt}{cyan!10!white}]
+}{%
+		\endtcolorbox
+	\end{minipage}
+    \vspace{5pt}
+}
 
 \NewDocumentCommand{\ex}{+m}{
-    \begin{example}$ $\\
+    \begin{example}
         #1
     \end{example}
 }
+
 
 % Remark
 \NewDocumentCommand{\rmk}{+m}{
@@ -245,15 +290,22 @@
 }
 
 \newenvironment{remark}{
-	{\noindent{\textbf{Remark.}}}
-	\tcolorbox[blanker,breakable,left=5mm,
-	before skip=10pt,after skip=10pt,
-	borderline west={1mm}{0pt}{cyan!10!white}]
+    \par
+    \vspace{5pt}
+    \begin{minipage}{\textwidth}
+        {\par\noindent{\textbf{Remark.}}}
+        \tcolorbox[blanker,breakable,left=5mm,
+        before skip=10pt,after skip=10pt,
+        borderline west={1mm}{0pt}{cyan!10!white}]
+}{
+        \endtcolorbox
+    \end{minipage}
+    \vspace{5pt}
 }
-{\endtcolorbox}
 
 \NewDocumentCommand{\rmkb}{+m}{
-    \begin{remark}$ $\\
+    \begin{remark}
         #1
     \end{remark}
 }
+
