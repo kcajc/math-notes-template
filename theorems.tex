@@ -262,18 +262,17 @@
 }
 
 % Example
-\newenvironment{example}{%
+\newenvironment{example}{
     \par
     \vspace{5pt}
-	\begin{minipage}{\textwidth}
-		\noindent\textbf{Example.}
-		\tcolorbox[blanker,breakable,left=5mm,parbox=false,
-	    before upper={\parindent15pt},
-	    after skip=10pt,
-		borderline west={1mm}{0pt}{cyan!10!white}]
-}{%
-		\endtcolorbox
-	\end{minipage}
+    \noindent\textbf{Example.}
+    \begin{tcolorbox}[
+        blanker, breakable, left=5mm, parbox=false,
+        before upper={\parindent15pt},
+        after skip=10pt,
+        borderline west={1mm}{0pt}{cyan!10!white}]
+}{
+    \end{tcolorbox}
     \vspace{5pt}
 }
 
@@ -283,7 +282,6 @@
     \end{example}
 }
 
-
 % Remark
 \NewDocumentCommand{\rmk}{+m}{
     {\it \color{blue!50!white}#1}
@@ -292,14 +290,14 @@
 \newenvironment{remark}{
     \par
     \vspace{5pt}
-    \begin{minipage}{\textwidth}
-        {\par\noindent{\textbf{Remark.}}}
-        \tcolorbox[blanker,breakable,left=5mm,
-        before skip=10pt,after skip=10pt,
+    \noindent\textbf{Remark.}
+    \begin{tcolorbox}[
+        blanker, breakable, left=5mm, parbox=false,
+        before upper={\parindent15pt},
+        after skip=10pt,
         borderline west={1mm}{0pt}{cyan!10!white}]
 }{
-        \endtcolorbox
-    \end{minipage}
+    \end{tcolorbox}
     \vspace{5pt}
 }
 
