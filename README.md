@@ -1,5 +1,5 @@
-# My LaTex Math Notes Template
-My LaTex template for math notes with stylized definitions, theorems and lemmas etc. from `tcolorbox`.
+# My LaTeX Math Notes Template
+My LaTeX template for math notes with stylized definitions, theorems and lemmas etc. from `tcolorbox`.
 
 ![Sample](img/sample.png)
 
