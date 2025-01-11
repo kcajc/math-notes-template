@@ -1,0 +1,88 @@
+\documentclass{report}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{kpfonts}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{fact}{Fact}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{claim}{Claim}
+\newtheorem*{example}{Example}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{algorithm}{Algorithm}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcounter{lecture}
+\newcommand{\lec}[1]{
+    \stepcounter{lecture}
+    \subsection*{\color{teal}\it Lecture \thelecture\ - #1}
+}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    % Title
+    {\Huge\bfseries MATH  101\par Course Name\par}
+    \vspace{2cm}
+    
+    % Author name
+    {\Large\itshape Instructor Name\par}
+    \vspace{0.5cm}
+    {Notes: Jack Z\par}
+    \vfill
+    
+    % Institution name
+    {\large Institute Name\par}
+    
+    % Date
+    {\large Winter 2025\par}
+\end{titlepage}
+
+
+\chapter{Chapter Name}
+
+\section{Section Name}
+
+\lec{Jan 6}
+
+\begin{definition}[Definition Name]
+  A definition.
+\end{definition}
+
+\begin{theorem}[Theorem Name]
+  A theorem.
+\end{theorem}
+
+\begin{proposition}
+  A proposition.
+\end{proposition}
+
+\begin{proof}
+  A proof.
+\end{proof}
+
+\end{document}
