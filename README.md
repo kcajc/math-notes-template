@@ -7,7 +7,7 @@ My LaTeX template for math notes with stylized definitions, theorems and lemmas 
 * `main.tex` - the main tex file
 * `commands.tex` - for custom commands, e.g. `\newcommand{\ZZ}{\mathbb{Z}}`
 * `theorems.tex` - definition of theorem boxes
-* other-templates
+* `other-templates/`
   * `math-assignment-template.tex` - a minimal template for assignments
   * `minimal.tex` - a self-contained, minimal template for notes
  
